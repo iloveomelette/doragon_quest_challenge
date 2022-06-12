@@ -8,12 +8,11 @@ class Monster < Character
   end
 
   def attack_brave(brave)
-    damage = (attack - brave.defense) / 2
-    damage = attack / 10 if damage <= 0
+    tmp_attack, attack_message, damage = calc_damage(brave)
 
     puts <<~TEXT
 
-      #{name}の攻撃！
+      #{name}の#{attack_message}！
       #{brave.name}は#{damage}のダメージを受けた
     TEXT
 
