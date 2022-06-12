@@ -1,7 +1,10 @@
 require_relative 'character'
 class Monster < Character
   def appear
-    puts "#{name}があらわれた！"
+    puts <<~TEXT
+
+      #{name}があらわれた！
+    TEXT
   end
 
   def attack_brave(brave)
@@ -9,6 +12,7 @@ class Monster < Character
     damage = attack / 10 if damage <= 0
 
     puts <<~TEXT
+
       #{name}の攻撃！
       #{brave.name}は#{damage}のダメージを受けた
     TEXT

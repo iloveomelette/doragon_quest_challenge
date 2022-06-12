@@ -5,6 +5,7 @@ class Brave < Character
     damage = attack / 10 if damage <= 0
 
     puts <<~TEXT
+
       #{name}の攻撃！
       #{monster.name}に#{damage}のダメージを与えた
     TEXT
