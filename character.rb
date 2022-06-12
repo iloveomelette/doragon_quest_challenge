@@ -12,8 +12,10 @@ class Character
 
   def calc_damage(character)
     tmp_attack = 0
+    last_index = RANDOM_NUMBERS.length - 1
+    index = rand(0..last_index)
 
-    case RANDOM_NUMBERS[rand(0..RANDOM_NUMBERS.length)]
+    case RANDOM_NUMBERS[index]
     when 0
       tmp_attack = attack
       attack_message = '通常攻撃'

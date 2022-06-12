@@ -54,7 +54,7 @@ end
 # ゆうしゃを選択させる処理
 while true
   selected_brave_num = ask_which_brave(brave_lists.length)
-  if (1...brave_lists.length).include?(selected_brave_num)
+  if (1..brave_lists.length).include?(selected_brave_num)
     brave = brave_lists[selected_brave_num - 1]
     break
   else
