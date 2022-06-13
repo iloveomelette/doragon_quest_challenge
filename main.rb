@@ -1,5 +1,7 @@
 require_relative 'monster'
 require_relative 'brave'
+require_relative 'message'
+include Message
 
 monster1 = Monster.new('アークデーモン', 150, 185, 60)
 monster2 = Monster.new('シャーク', 300, 250, 300)
@@ -11,49 +13,14 @@ brave2 = Brave.new('マイケル', 250, 90, 280)
 brave3 = Brave.new('トミー', 205, 210, 70)
 brave_lists = [brave1, brave2, brave3]
 
-def show_brave_lists(brave, num)
-  puts <<~TEXT
-
-    -----------------------------------------
-
-    No.#{num} 【#{brave.name}】HP: #{brave.hp} Attack: #{brave.attack} Defense: #{brave.defense}
-
-    -----------------------------------------
-  TEXT
-end
-
-def ask_which_brave(num)
-  puts <<~TEXT
-
-    どの勇者を選択しますか？
-    (【1】から【#{num}】までの半角数字で選択してください)
-
-  TEXT
-  print 'リストから選択 > '
-  gets.to_i
-end
-
-def show_rest_hp_message(brave, monster)
-  puts <<~TEXT
-
-    *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-    【#{brave.name}】HP: #{brave.hp.round}
-    【#{monster.name}】HP: #{monster.hp.round}
-    *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-
-  TEXT
-  print 'Enterを押して進める '
-  gets.to_i
-end
-
 # ゆうしゃのリストを表示する処理
 brave_lists.each.with_index(1) do |brave, num|
-  show_brave_lists(brave, num)
+  show_brave_lists_message(brave, num)
 end
 
 # ゆうしゃを選択させる処理
 while true
-  selected_brave_num = ask_which_brave(brave_lists.length)
+  selected_brave_num = ask_which_brave_message(brave_lists.length)
   if (1..brave_lists.length).include?(selected_brave_num)
     brave = brave_lists[selected_brave_num - 1]
     break
