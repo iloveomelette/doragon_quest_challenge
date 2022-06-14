@@ -8,14 +8,8 @@ class Monster < Character
   end
 
   def attack_brave(brave)
-    tmp_attack, attack_message, damage = calc_damage(brave)
-
-    puts <<~TEXT
-
-      #{name}の#{attack_message}！
-      #{brave.name}は#{damage}のダメージを受けた
-    TEXT
-
+    attack_message, damage = calc_damage(brave)
+    attack_brave_message(name, attack_message, brave.name, damage)
     brave.hp -= damage
   end
 

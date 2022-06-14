@@ -22,7 +22,7 @@ class Character
     damage = (tmp_attack - character.defense) / DAMAGE_RATE
     damage = tmp_attack / EXCEPTION_DAMAGE_RATE if damage <= 0
 
-    [tmp_attack, attack_message, damage]
+    [attack_message, damage]
   end
 
   private

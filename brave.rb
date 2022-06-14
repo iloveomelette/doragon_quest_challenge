@@ -1,14 +1,8 @@
 require_relative 'character'
 class Brave < Character
   def attack_monster(monster)
-    tmp_attack, attack_message, damage = calc_damage(monster)
-
-    puts <<~TEXT
-
-      #{name}の#{attack_message}！
-      #{monster.name}に#{damage}のダメージを与えた
-    TEXT
-
+    attack_message, damage = calc_damage(monster)
+    attack_monster_message(name, attack_message, monster.name, damage)
     monster.hp -= damage
   end
 
