@@ -8,7 +8,7 @@ class Monster < Character
   end
 
   def attack_brave(brave)
-    attack_message, damage = calc_damage(brave)
+    attack_message, damage = calc_damage(brave) # `Character`クラス
     attack_brave_message(name, attack_message, brave.name, damage)
     brave.hp -= damage
   end
@@ -23,7 +23,5 @@ class Monster < Character
 
       #{brave.name}はしんでしまった!
     TEXT
-
-    exit
   end
 end

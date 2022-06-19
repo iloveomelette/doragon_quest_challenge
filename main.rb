@@ -26,7 +26,9 @@ brave = allow_users_to_choose(brave_lists)
 # ===== ランダムでモンスターを決定する処理 =====
 monster = randomly_determine_monsters(monster_lists)
 
+character_hp_reset_lists = [brave.hp, monster.hp]
+
 monster.appear
 
 # ===== 勇者とモンスターの戦闘処理 =====
-brave_fight_monster(brave, monster)
+brave_fight_monster(brave, monster, character_hp_reset_lists)

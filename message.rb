@@ -18,6 +18,7 @@ module Message
       (【1】から【#{num}】までの半角数字で選択してください)
 
     TEXT
+
     print 'リストから選択 > '
     gets.to_i
   end
@@ -32,6 +33,33 @@ module Message
 
     TEXT
     print 'Enterを押して進める '
+    gets.to_i
+  end
+
+  def user_choice_error_message(brave_lists)
+    puts <<~TEXT
+
+      =========================================================
+
+        ! Error ! ＊【1】から【#{brave_lists.length}】までの数字を選択してください
+
+      =========================================================
+
+    TEXT
+  end
+
+  def continue_or_exit_message(continue_number, exit_number)
+    puts <<~TEXT
+
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=コンテニュー？*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*
+
+      【#{continue_number}】: 続ける  【#{exit_number}】: やめる
+
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=**=*=*=*=*
+
+    TEXT
+
+    print '番号を選択 > '
     gets.to_i
   end
 
