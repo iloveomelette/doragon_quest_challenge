@@ -2,8 +2,6 @@ require_relative 'message'
 module MainHelper
   include Message
 
-  ALIVE = 0
-  DEAD = 1
   CONTINUE_NUMBER = 1
   EXIT_NUMBER = 2
 
@@ -29,7 +27,6 @@ module MainHelper
   end
 
   def brave_fight_monster(brave, monster, character_hp_reset_lists)
-    brave_dead_or_alive = ALIVE
     brave.hp = character_hp_reset_lists[0]
     monster.hp = character_hp_reset_lists[1]
 
@@ -40,66 +37,23 @@ module MainHelper
       brave.knock_monster_down(monster) if monster.hp <= 0
 
       monster.attack_brave(brave)
-      if brave.hp <= 0
-        monster.knock_brave_down(brave)
-        brave_dead_or_alive = DEAD
-      end
+      next unless brave.hp <= 0
 
-      if brave_dead_or_alive == DEAD
-        continue_or_exit(CONTINUE_NUMBER, EXIT_NUMBER, brave, monster,
-                         character_hp_reset_lists)
-      end
+      monster.knock_brave_down(brave)
+      continue_or_exit(brave, monster, character_hp_reset_lists)
     end
   end
 
-  private
-
-  def character_reset(character_hp_reset_lists)
-    brave = character_hp_reset_lists[0]
-    monster = character_hp_reset_lists[1]
-
-    [brave, monster]
-  end
-
-  def continue_or_exit(continue_number, exit_number, brave, monster, character_hp_reset_lists)
-    puts <<~TEXT
-
-      *=*=*=*=*=*コンテニュー？=*=*=*=*=*=*=*
-
-      【#{continue_number}】: 続ける  【#{exit_number}】: やめる
-
-      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*
-
-    TEXT
-
-    print '番号を選択 > '
-    selected_continue_or_exit_number = gets.to_i
+  def continue_or_exit(brave, monster, character_hp_reset_lists)
+    selected_continue_or_exit_number = continue_or_exit_message(CONTINUE_NUMBER, EXIT_NUMBER)
 
     case selected_continue_or_exit_number
     when CONTINUE_NUMBER
-      puts <<~TEXT
-
-        *=*=*=*=*=*=*=*=*=*=**=*=*=*
-
-        再挑戦します...
-
-        *=*=*=*=*=*=*=*=*=*=**=*=*=*
-
-      TEXT
+      brave_revenge_message # Messageモジュール
 
       brave_fight_monster(brave, monster, character_hp_reset_lists)
     when EXIT_NUMBER
-      puts <<~TEXT
-
-        *=*=*=*=*=*=*=*=*=*=**=*=*=*
-
-        ゲームを終了します...
-
-        *=*=*=*=*=*=*=*=*=*=**=*=*=*
-
-      TEXT
-
-      exit
+      game_exit_message   # Messageモジュール
     end
   end
 end
