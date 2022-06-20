@@ -5,4 +5,16 @@ class Monster < Character
     attack_brave_message(name, attack_message, brave.name, damage)
     brave.hp -= damage
   end
+
+  def knock_brave_down(brave)
+    puts <<~TEXT
+
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+      【#{brave.name}】HP: 0
+      【#{name}】HP: #{hp.round}
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+
+      #{brave.name}はしんでしまった!
+    TEXT
+  end
 end

@@ -55,32 +55,6 @@ module Message
     TEXT
   end
 
-  def knock_monster_down_message(brave, monster)
-    puts <<~TEXT
-
-      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-      【#{brave.name}】HP: #{brave.hp.round}
-      【#{monster.name}】HP: 0
-      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-
-      #{monster.name}をやっつけた!
-    TEXT
-
-    exit
-  end
-
-  def knock_brave_down_message(brave, monster)
-    puts <<~TEXT
-
-      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-      【#{brave.name}】HP: 0
-      【#{monster.name}】HP: #{monster.hp.round}
-      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
-
-      #{brave.name}はしんでしまった!
-    TEXT
-  end
-
   def continue_or_exit_message(continue_number, exit_number)
     puts <<~TEXT
 

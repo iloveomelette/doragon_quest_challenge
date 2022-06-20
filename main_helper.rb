@@ -34,12 +34,12 @@ module MainHelper
       show_rest_hp_message(brave, monster)
 
       brave.attack_monster(monster)
-      knock_monster_down_message(brave, monster) if monster.hp <= 0
+      brave.knock_monster_down(monster) if monster.hp <= 0
 
       monster.attack_brave(brave)
       next unless brave.hp <= 0
 
-      knock_brave_down_message(brave, monster)
+      monster.knock_brave_down(brave)
       continue_or_exit(brave, monster, character_hp_reset_lists)
     end
   end
