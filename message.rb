@@ -1,5 +1,12 @@
 module Message
   # ===== ここからメインの処理で利用 =====
+  def monster_appear_message(monster_name)
+    puts <<~TEXT
+
+      #{monster_name}があらわれた！
+    TEXT
+  end
+
   def show_brave_lists_message(brave, num)
     puts <<~TEXT
 
@@ -45,6 +52,32 @@ module Message
 
       =========================================================
 
+    TEXT
+  end
+
+  def knock_monster_down_message(brave, monster)
+    puts <<~TEXT
+
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+      【#{brave.name}】HP: #{brave.hp.round}
+      【#{monster.name}】HP: 0
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+
+      #{monster.name}をやっつけた!
+    TEXT
+
+    exit
+  end
+
+  def knock_brave_down_message(brave, monster)
+    puts <<~TEXT
+
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+      【#{brave.name}】HP: 0
+      【#{monster.name}】HP: #{monster.hp.round}
+      *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*
+
+      #{brave.name}はしんでしまった!
     TEXT
   end
 

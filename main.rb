@@ -28,7 +28,7 @@ monster = randomly_determine_monsters(monster_lists)
 
 character_hp_reset_lists = [brave.hp, monster.hp]
 
-monster.appear
+monster_appear_message(monster.name)
 
 # ===== 勇者とモンスターの戦闘処理 =====
 brave_fight_monster(brave, monster, character_hp_reset_lists)
