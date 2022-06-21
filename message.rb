@@ -43,24 +43,24 @@ module Message
     gets.to_i
   end
 
-  def user_choice_error_message(brave_lists)
+  def user_choice_error_message(lists)
     puts <<~TEXT
 
       =========================================================
 
-        ! Error ! ＊【1】から【#{brave_lists.length}】までの数字を選択してください
+        ! Error ! ＊【1】から【#{lists.length}】までの数字を選択してください
 
       =========================================================
 
     TEXT
   end
 
-  def continue_or_exit_message(continue_number, exit_number)
+  def continue_or_exit_message(continue_or_exit_lists)
     puts <<~TEXT
 
       *=*=*=*=*=*コンテニュー？=*=*=*=*=*=*=*
 
-      【#{continue_number}】: 続ける  【#{exit_number}】: やめる
+      【#{continue_or_exit_lists[0]}】: 続ける  【#{continue_or_exit_lists[1]}】: やめる
 
       *=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*
 

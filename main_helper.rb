@@ -45,15 +45,22 @@ module MainHelper
   end
 
   def continue_or_exit(brave, monster, character_hp_reset_lists)
-    selected_continue_or_exit_number = continue_or_exit_message(CONTINUE_NUMBER, EXIT_NUMBER)
+    while true
+      continue_or_exit_lists = [CONTINUE_NUMBER, EXIT_NUMBER]
+      selected_continue_or_exit_number = continue_or_exit_message(continue_or_exit_lists)
 
-    case selected_continue_or_exit_number
-    when CONTINUE_NUMBER
-      brave_revenge_message
+      if continue_or_exit_lists.include?(selected_continue_or_exit_number)
+        case selected_continue_or_exit_number
+        when CONTINUE_NUMBER
+          brave_revenge_message
 
-      brave_fight_monster(brave, monster, character_hp_reset_lists)
-    when EXIT_NUMBER
-      game_exit_message
+          brave_fight_monster(brave, monster, character_hp_reset_lists)
+        when EXIT_NUMBER
+          game_exit_message
+        end
+      else
+        user_choice_error_message(continue_or_exit_lists)
+      end
     end
   end
 end
